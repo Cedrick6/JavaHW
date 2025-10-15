@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Global Sequence Alignment",
+            "request": "launch",
+            "mainClass": "${file}",
+            "args": "${command:SpecifyProgramArgs}"
+        },
+    ]
+}
