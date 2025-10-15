@@ -10,7 +10,6 @@ public class Reverse {
         for (String arg : args) {
             input.append(arg).append(" ");
         }
-
         input.setLength(input.length() - 1);
         input.reverse();
 

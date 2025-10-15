@@ -1,6 +1,5 @@
 
 import java.util.Scanner;
-
 // import stdlib.StdIn;
 // import stdlib.StdOut;
 
@@ -14,8 +13,13 @@ public class Distance {
         double[] x = new double[n];
         double[] y = new double[n];
 
-        for (int i = 0; i < n; i++) x[i] = scanner.nextDouble();
-        for (int i = 0; i < n; i++) y[i] = scanner.nextDouble();
+        for (int i = 0; i < n; i++){ 
+            x[i] = scanner.nextDouble();
+        }
+
+        for (int i = 0; i < n; i++) {
+            y[i] = scanner.nextDouble();
+        }
         scanner.close();
 
         double sum = 0;
