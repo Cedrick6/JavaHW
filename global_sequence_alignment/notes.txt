@@ -3,24 +3,24 @@ problem along with any issues you encountered and if/how you managed to solve th
 
 [Problem 1 (Compute Edit Distance)]
 
-Goal: ... 
+Goal: To find the edit distance between two DNA sequences with the global sequence alignment. The program will create the dynamic matrix opt
 
-Approach: ... 
+Approach: First, I used the provided helper methods charAt, length, and min to simplify working with strings and calculate the min penalties. I created a buildDistance method to construct the edit distance matrix by dynamic prog. Lastly, I made a printing method that loops through the matrix to print it in a formatted way
 
 [Problem 2 (Recover Alignment)]
 
-Goal: ... 
+Goal: To recover an optimal alignment of two DNA seq by retracing the choices in the edit distance matrix and print each aligned pair with its associated penalty. 
 
-Approach: ... 
+Approach: First, I created a recoverAlignment method that goes through the prev matrix from the start. At each step, it looks at the next cells to decide if two char should be matched or if gap should be added. I used the helper methods charAt and length to get characters from the strings and to know the matrix size.
 
 2. Did you receive any help? List the sources along with a short description of the help received.
 
 Source                               Help Received
 ------                               -------------
 
-...                                  ...
+Prof                                  Advised to use use method instead of putting everything in main
 
 3. List any other comments here. Feel free to provide any feedback on how much you learned from
 doing the assignment, and whether you enjoyed doing it.
 
-...
+N/A

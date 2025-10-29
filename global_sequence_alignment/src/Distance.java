@@ -1,33 +1,42 @@
-
 import java.util.Scanner;
 // import stdlib.StdIn;
 // import stdlib.StdOut;
 
 public class Distance {
     // Entry point.
-    public static void main(String[] args) {
-        // TODO
 
-        int n = Integer.parseInt(args[0]);
-        Scanner scanner = new Scanner(System.in);
-        double[] x = new double[n];
-        double[] y = new double[n];
-
-        for (int i = 0; i < n; i++){ 
-            x[i] = scanner.nextDouble();
-        }
-
+     // reads n double from standard input
+    public static double[] readArray(Scanner scanner, int n) {
+        double[] arr = new double[n];
         for (int i = 0; i < n; i++) {
-            y[i] = scanner.nextDouble();
+            arr[i] = scanner.nextDouble();
         }
-        scanner.close();
+        return arr;
+    }
 
-        double sum = 0;
-        for (int i = 0; i < n; i++) {
+    // calculate the Euclidean distanceds
+    public static double euclideanDistance(double[] x, double[] y) {
+        double sum = 0.0;
+        for (int i = 0; i < x.length; i++) {
             double diff = x[i] - y[i];
             sum += diff * diff;
         }
-        System.out.println(Math.sqrt(sum));
+        return Math.sqrt(sum);
+    }
+
+    public static void main(String[] args) {
+        // TODO
+        int n = Integer.parseInt(args[0]);
+        Scanner scanner = new Scanner(System.in);
+
+        double[] x = readArray(scanner, n);
+        double[] y = readArray(scanner, n);
+
+        scanner.close();
+
+        System.out.println(euclideanDistance(x, y));
     
     }
 }
+//. javac -d out src/Distance.java
+//. java Distance
