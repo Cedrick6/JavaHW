@@ -74,7 +74,7 @@ public class Die {
                 sb.append("* * *"); 
                 break;
             default:
-                sb.append("(unrolled)");
+                sb.append("Error");
         }
         return sb.toString();
     }

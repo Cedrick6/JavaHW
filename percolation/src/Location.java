@@ -16,23 +16,16 @@ public class Location {
     // Returns the great-circle distance between this location and other.
     public double distanceTo(Location other) {
         // TODO
-        double R = 6371.0; // Earth’s radius in kilometers
-
         double lat1 = Math.toRadians(this.lat);
         double lon1 = Math.toRadians(this.lon);
         double lat2 = Math.toRadians(other.lat);
         double lon2 = Math.toRadians(other.lon);
 
-        double dlat = lat2 - lat1;
-        double dlon = lon2 - lon1;
+        double d = 6359.83 * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
 
-        double a = Math.sin(dlat / 2) * Math.sin(dlat / 2)
-                 + Math.cos(lat1) * Math.cos(lat2)
-                 * Math.sin(dlon / 2) * Math.sin(dlon / 2);
-
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return R * c;    }
+        return d;    
+    }
 
     // Returns true if this location is the same as other, and false otherwise.
     public boolean equals(Object other) {

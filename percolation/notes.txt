@@ -3,24 +3,25 @@ problem along with any issues you encountered and if/how you managed to solve th
 
 Problem 1 (Percolation Data Type): ...
 
-Goal: ... 
+Goal: The goal is to create a percolation data type that models an n x n grid.
 
-Approach: ... 
+Approach: I will implement the methods provided step by step first constructing the n x n percolation system. Ensure that the exceptions are thrown where necessary 
 
 Problem 2 (Estimation of Percolation Threshold): ...
 
-Goal: ... 
+Goal: The goal is to estimate the percolation threshold using Monte Carlo simulation by running multiple independent experiments. 
 
-Approach: ... 
+Approach: I will implement the methods provided step by step, first I will perform independent experiments on an n × n percolation system. For each experiment, I'll create a new Percolation
+
 
 2. Did you receive any help? List the sources along with a short description of the help received.
 
 Source                               Help Received
 ------                               -------------
 
-...                                  ...
+TA                                   Discussion sessions
 
 3. List any other comments here. Feel free to provide any feedback on how much you learned from
 doing the assignment, and whether you enjoyed doing it.
 
-...
+The comments provided are really helpful.

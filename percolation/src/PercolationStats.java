@@ -9,30 +9,47 @@ public class PercolationStats {
     // Performs m independent experiments on an n x n percolation system.
     public PercolationStats(int n, int m) {
         // TODO
+        if (n <= 0 || m <= 0){
+            throw new IllegalArgumentException("Illegal n or m");
+        } 
+        this.m = m;
+        x = new double[m];
+
+        for (int t = 0; t < m; t++) {
+            Percolation perc = new Percolation(n);
+            while (!perc.percolates()) {
+                int i = StdRandom.uniform(n);
+                int j = StdRandom.uniform(n);
+            if (!perc.isOpen(i,j)) {
+                perc.open(i,j);
+                }            
+            }
+            x[t] = (double) perc.numberOfOpenSites() / (n * n);
+        }
     }
 
     // Returns sample mean of percolation threshold.
     public double mean() {
         // TODO
-        return 0;
+        return StdStats.mean(x);
     }
 
     // Returns sample standard deviation of percolation threshold.
     public double stddev() {
         // TODO
-        return 0;
+        return StdStats.stddev(x);
     }
 
     // Returns low endpoint of the 95% confidence interval.
     public double confidenceLow() {
         // TODO
-        return 0;
+        return mean() - 1.96 * stddev() / Math.sqrt(m);
     }
 
     // Returns high endpoint of the 95% confidence interval.
     public double confidenceHigh() {
         // TODO
-        return 0;
+        return mean() + 1.96 * stddev() / Math.sqrt(m);
     }
 
     // Unit tests the data type. [DO NOT EDIT]
@@ -46,3 +63,5 @@ public class PercolationStats {
         StdOut.printf("  Confidence interval = [%.3f, %.3f]\n", stats.confidenceLow(), stats.confidenceHigh());
     }
 }
+// javac -d out src/PercolationStats.java
+// java PercolationStats 100 1000

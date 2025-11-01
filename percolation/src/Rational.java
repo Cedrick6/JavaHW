@@ -17,13 +17,7 @@ public class Rational {
         long g = gcd(Math.abs(x), Math.abs(y));
         x /= g;
         y /= g;
-
-        // Ensure denominator is always positive
-        if (y < 0) {
-            x = -x;
-            y = -y;
-        }
-
+        
         this.x = x;
         this.y = y;
     }
@@ -65,10 +59,7 @@ public class Rational {
         if (x == 0 || y == 1) {
             return x + "";
         }
-        if (y < 0) {
-            x *= -1;
-            y *= -1;
-        }
+
         return x + "/" + y;
     }
 
