@@ -13,58 +13,121 @@ public class LinkedDeque<T> implements Iterable<T> {
     // Constructs an empty deque.
     public LinkedDeque() {
         // TODO
+        first = null;
+        last = null;
+        n = 0;
     }
 
     // Returns true if this deque is empty, and false otherwise.
     public boolean isEmpty() {
         // TODO
-        return false;
+        return n == 0;
     }
 
     // Returns the number of items in this deque.
     public int size() {
         // TODO
-        return 0;
+        return n;
     }
 
     // Adds item to the front of this deque.
     public void addFirst(T item) {
         // TODO
+        if (item == null) {
+            throw new NullPointerException("item is null");
+        }
+        Node oldFirst = first;
+        first = new Node();
+        first.item = item;
+        first.next = oldFirst;
+        first.prev = null;
+        
+        if (isEmpty()) {
+            last = first;
+        } else {
+            oldFirst.prev = first;
+        }
+        n++;
     }
 
     // Adds item to the back of this deque.
     public void addLast(T item) {
         // TODO
+        if (item == null) {
+            throw new NullPointerException("item is null");
+        }
+        Node oldLast = last;
+        last = new Node();
+        last.item = item;
+        last.next = null;
+        last.prev = oldLast;
+        
+        if (isEmpty()) {
+            first = last;
+        } else {
+            oldLast.next = last;
+        }
+        n++;
     }
 
     // Returns the item at the front of this deque.
     public T peekFirst() {
         // TODO
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException("Deque is empty");
+        }
+        return first.item;
     }
 
     // Removes and returns the item at the front of this deque.
     public T removeFirst() {
         // TODO
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException("Deque is empty");
+        }
+        T item = first.item;
+        first = first.next;
+        n--;
+        
+        if (isEmpty()) {
+            last = null;
+        } else {
+            first.prev = null;
+        }
+        return item;
     }
 
     // Returns the item at the back of this deque.
     public T peekLast() {
         // TODO
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException("Deque is empty");
+        }
+        return last.item;
     }
 
     // Removes and returns the item at the back of this deque.
     public T removeLast() {
         // TODO
-        return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException("Deque is empty");
+        }
+        T item = last.item;
+        last = last.prev;
+        n--;
+        
+        if (isEmpty()) {
+            first = null;
+        } else {
+            last.next = null;
+        }
+        return item;
     }
 
     // Returns an iterator to iterate over the items in this deque from front to back.
     public Iterator<T> iterator() {
         // TODO
-        return null;
+         return new DequeIterator();
     }
 
     // Returns a string representation of this deque.
@@ -79,22 +142,29 @@ public class LinkedDeque<T> implements Iterable<T> {
     // A deque iterator.
     private class DequeIterator implements Iterator<T> {
         // TODO
+         private Node current;
 
         // Constructs an iterator.
         public DequeIterator() {
             // TODO
+            current = first;
         }
 
         // Returns true if there are more items to iterate, and false otherwise.
         public boolean hasNext() {
             // TODO
-            return false;
+            return current != null;
         }
 
         // Returns the next item.
         public T next() {
             // TODO
-            return null;
+            if (!hasNext()) {
+                throw new NoSuchElementException("Iterator is empty");
+            }
+            T item = current.item;
+            current = current.next;
+            return item;
         }
     }
 

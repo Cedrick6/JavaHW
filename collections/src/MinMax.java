@@ -6,13 +6,33 @@ public class MinMax {
     // Returns the minimum value in the given linked list.
     public static int min(Node first) {
         // TODO
-        return 0;
+        if (first == null) {
+            return Integer.MAX_VALUE;
+        }
+
+        int minVal = first.item;
+        for (Node current = first.next; current != null; current = current.next) {
+            if (current.item < minVal) {
+                minVal = current.item;
+            }
+        }
+        return minVal;
     }
 
     // Returns the maximum value in the given linked list.
     public static int max(Node first) {
         // TODO
-        return 0;
+        if (first == null) {
+            return Integer.MIN_VALUE;
+        }
+
+        int maxVal = first.item;
+        for (Node current = first.next; current != null; current = current.next) {
+            if (current.item > maxVal) {
+                maxVal = current.item;
+            }
+        }
+        return maxVal;
     }
 
     // A data type to represent a linked list. Each node in the list stores an integer item and a

@@ -15,35 +15,57 @@ public class Buffer {
     // Inserts c at the cursor position.
     public void insert(char c) {
         // TODO
+        left.push(c);
     }
 
     // Deletes and returns the character immediately ahead of the cursor.
     public char delete() {
         // TODO
-        return 0;
+        return right.pop();
     }
 
     // Moves the cursor k positions to the left.
     public void left(int k) {
         // TODO
+        for (int i = 0; i < k && !left.isEmpty(); i++) {
+            right.push(left.pop());
+        }
     }
 
     // Moves the cursor k positions to the right.
     public void right(int k) {
         // TODO
+        for (int i = 0; i < k && !right.isEmpty(); i++) {
+            left.push(right.pop());
+        }
     }
 
     // Returns the number of characters in this buffer.
     public int size() {
         // TODO
-        return 0;
+        return left.size() + right.size();
     }
 
     // Returns a string representation of the buffer with the "|" character (not part of the buffer) at the cursor 
     // position.
     public String toString() {
         // TODO
-        return null;
+        StringBuilder leftPart = new StringBuilder();
+        StringBuilder rightPart = new StringBuilder();
+        
+        LinkedStack<Character> tempLeft = new LinkedStack<Character>();
+        for (Character c : left) {
+            tempLeft.push(c);
+        }
+        while (!tempLeft.isEmpty()) {
+            leftPart.append(tempLeft.pop());
+        }
+        
+        for (Character c : right) {
+            rightPart.append(c); 
+        }
+        
+        return leftPart.toString() + "|" + rightPart.toString();
     }
 
     // Unit tests the data type (DO NOT EDIT).

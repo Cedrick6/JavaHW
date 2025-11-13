@@ -12,41 +12,67 @@ public class ResizingArrayRandomQueue<T> implements Iterable<T> {
     @SuppressWarnings("unchecked")
     public ResizingArrayRandomQueue() {
         // TODO
+        q = (T[]) new Object[2];
+        n = 0;
     }
 
     // Returns true if this queue is empty, and false otherwise.
     public boolean isEmpty() {
         // TODO
-        return false;
+        return n == 0;
     }
 
     // Returns the number of items in this queue.
     public int size() {
         // TODO
-        return 0;
+        return n;
     }
 
     // Adds item to the end of this queue.
     public void enqueue(T item) {
         // TODO
+        if (item == null) {
+            throw new NullPointerException("item is null");
+        }
+        if (n == q.length) {
+            resize(2 * q.length);
+        }
+        q[n++] = item;
     }
 
     // Returns a random item from this queue.
     public T sample() {
         // TODO
-        return null;
+       if (isEmpty()) {
+            throw new NoSuchElementException("Random queue is empty");
+        }
+        int randomIndex = StdRandom.uniform(n);
+        return q[randomIndex];
     }
 
     // Removes and returns a random item from this queue.
     public T dequeue() {
         // TODO
-        return null;
-    }
+        if (isEmpty()) {
+            throw new NoSuchElementException("Random queue is empty");
+        }
+        int randomIndex = StdRandom.uniform(n);
+        T item = q[randomIndex];
+        
+        q[randomIndex] = q[n - 1];
+        q[n - 1] = null;  // Avoid loitering
+        n--;
+        
+        if (n > 0 && n == q.length / 4) {
+            resize(q.length / 2);
+        }
+        
+        return item;    }
 
     // Returns an independent iterator to iterate over the items in this queue in random order.
     public Iterator<T> iterator() {
         // TODO
-        return null;        
+        return new RandomQueueIterator();    
     }
 
     // Returns a string representation of this queue.
@@ -61,23 +87,35 @@ public class ResizingArrayRandomQueue<T> implements Iterable<T> {
     // An iterator, doesn't implement remove() since it's optional.
     private class RandomQueueIterator implements Iterator<T> {
         // TODO
+        private T[] items;
+        private int current;
 
         // Constructs an iterator.
         @SuppressWarnings("unchecked")
         public RandomQueueIterator() {
             // TODO
+            items = (T[]) new Object[n];
+            for (int i = 0; i < n; i++) {
+                items[i] = q[i];
+            }
+
+            StdRandom.shuffle(items);
+            current = 0;
         }
 
         // Returns true if there are more items to iterate, and false otherwise.
         public boolean hasNext() {
             // TODO
-            return false;
+            return current < items.length;        
         }
 
         // Returns the next item.
         public T next() {
             // TODO
-            return null;
+            if (!hasNext()) {
+                throw new NoSuchElementException("Iterator is empty");
+            }
+            return items[current++];
         }
     }
 

@@ -3,24 +3,24 @@ problem along with any issues you encountered and if/how you managed to solve th
 
 [Problem 1 (Deque)]
 
-Goal: ...
+Goal: The goal is to implement a double ended queue using a doubly linked list that let you add and remove items from both the front and back. 
 
-Approach: ...
+Approach: I first went over the template code and understood what I needed to do, I then tackled it one method at a time making sure I follow the instructions to get the outcome required.
 
 [Problem 2 (Random Queue)]
 
-Goal: ...
+Goal: The goal is to implement a random queue using a resizing array where items are removed uniformly at random and iterators produce independent random orderings.
 
-Approach: ...
+Approach: I first went over the template code and understood what I needed to do, I then tackled it one method at a time making sure I follow the instructions to get the outcome required.
 
 2. Did you receive any help? List the sources along with a short description of the help received.
 
 Source                               Help Received
 ------                               -------------
 
-...                                  ...
+N/A                                  	N/A
 
 3. List any other comments here. Feel free to provide any feedback on how much you learned from
 doing the assignment, and whether you enjoyed doing it.
 
-...
+The instructions in the comments are really helpful.
